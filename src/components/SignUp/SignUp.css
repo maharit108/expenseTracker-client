@@ -40,18 +40,18 @@
   width: 250px;
 }
 
-.MuiSvgIcon-root {
+.signUp__wrapper .MuiSvgIcon-root {
   position: absolute;
   right: 20px;
-  top: 20px;
+  top: 30px;
   color: #f48fb0;
 }
 
-.MuiSvgIcon-root:hover {
+.signUp__wrapper .MuiSvgIcon-root:hover {
   transform: scale(1.1);
   transition: 300ms;
 }
 
-.MuiSvgIcon-root:not(:hover) {
+.signUp__wrapper .MuiSvgIcon-root:not(:hover) {
   transition: 300ms;
 }

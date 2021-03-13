@@ -1,0 +1,17 @@
+.modal-body p {
+  text-align: center;
+}
+
+.modal-body .MuiSvgIcon-root {
+  float: right;
+  margin: 0 20px 0 0;
+}
+
+.modal-body .MuiSvgIcon-root:hover {
+  transform: scale(1.1);
+  transition: 300ms;
+}
+
+.modal-body .MuiSvgIcon-root:not(:hover) {
+  transition: 300ms;
+}

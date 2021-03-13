@@ -6,7 +6,7 @@ const options = (
   <Fragment>
     <Nav.Link to="/">Home</Nav.Link>
     <Nav.Link href="#chg-pwd">Change Password</Nav.Link>
-    <Nav.Link href="/sign-out">Sign Out</Nav.Link>
+    <Nav.Link href="#sign-out">Sign Out</Nav.Link>
   </Fragment>
 )
 

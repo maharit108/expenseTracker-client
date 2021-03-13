@@ -6,7 +6,7 @@
 }
 
 .signIn__wrapper {
-  padding: 40px 80px 40px 80px;
+  padding: 30px 80px 30px 80px;
   text-align: center;
   background-color: white;
   border-radius: 10px;
@@ -40,18 +40,18 @@
   width: 250px;
 }
 
-.MuiSvgIcon-root {
+.signIn__wrapper .MuiSvgIcon-root {
   position: absolute;
   right: 20px;
-  top: 20px;
+  top: 30px;
   color: #f48fb0;
 }
 
-.MuiSvgIcon-root:hover {
+.signIn__wrapper .MuiSvgIcon-root:hover {
   transform: scale(1.1);
   transition: 300ms;
 }
 
-.MuiSvgIcon-root:not(:hover) {
+.signIn__wrapper .MuiSvgIcon-root:not(:hover) {
   transition: 300ms;
 }
