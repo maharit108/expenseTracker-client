@@ -47,22 +47,20 @@ class App extends Component {
           ) : (
             <div>
               <Header user={user} />
-              <main className="container">
-                <AuthenticatedRoute user={user} path='/sign-out' render={() => (
-                  <SignOut msgAlert={this.msgAlert} clearUser={this.clearUser} user={user} />
-                )} />
-                <AuthenticatedRoute user={user} path='/change-password' render={() => (
-                  <ChangePassword msgAlert={this.msgAlert} user={user} />
-                )} />
-              </main>
             </div>
           )
         )} />
-        <Route path='/sign-up' render={() => (
+        <Route exact path='/sign-up' render={() => (
           <SignUp msgAlert={this.msgAlert} setUser={this.setUser} />
         )} />
-        <Route path='/sign-in' render={() => (
+        <Route exact path='/sign-in' render={() => (
           <SignIn msgAlert={this.msgAlert} setUser={this.setUser} />
+        )} />
+        <AuthenticatedRoute user={user} exact path='/sign-out' render={() => (
+          <SignOut msgAlert={this.msgAlert} clearUser={this.clearUser} user={user} />
+        )} />
+        <AuthenticatedRoute user={user} exact path='/chg-pwd' render={() => (
+          <ChangePassword msgAlert={this.msgAlert} user={user} />
         )} />
       </Fragment>
     )

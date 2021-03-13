@@ -7,7 +7,6 @@ import { withRouter } from 'react-router-dom'
 class Landing extends Component {
   signIn = (e) => {
     e.preventDefault()
-    this.props.setUser(null)
     this.props.history.push('/sign-in')
   }
   signUp = (e) => {

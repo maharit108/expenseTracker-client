@@ -6,6 +6,9 @@ import messages from '../AutoDismissAlert/messages'
 
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
+import CancelIcon from '@material-ui/icons/Cancel'
+
+import './ChangePassword.css'
 
 class ChangePassword extends Component {
   constructor () {
@@ -23,9 +26,7 @@ class ChangePassword extends Component {
 
   onChangePassword = event => {
     event.preventDefault()
-
     const { msgAlert, history, user } = this.props
-
     if (this.state.password === this.state.confirmpassword && this.state.password !== '') {
       changePassword(this.state, user)
         .then(() => msgAlert({
@@ -51,12 +52,18 @@ class ChangePassword extends Component {
     }
   }
 
+  onCancel = e => {
+    e.preventDefault()
+    this.props.history.push('/')
+  }
+
   render () {
     const { password, confirmpassword } = this.state
-
+    console.log('pwd', this.props.user)
     return (
-      <div className="row">
-        <div className="col-sm-10 col-md-8 mx-auto mt-5">
+      <div className="pwdBox">
+        <div className="changePassword__wrapper">
+          <CancelIcon fontSize='large' onClick={this.onCancel} />
           <h3>Change Password</h3>
           <Form onSubmit={this.onChangePassword}>
             <Form.Group controlId="password">

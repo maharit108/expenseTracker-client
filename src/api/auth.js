@@ -30,7 +30,7 @@ export const signIn = credentials => {
 
 export const deleteUser = user => {
   return axios({
-    url: apiUrl + `/api/profile/${user.id}/`,
+    url: apiUrl + `/api/profile/${user.user_id}/`,
     method: 'DELETE',
     headers: {
       'Authorization': `Token ${user.token}`
@@ -40,7 +40,7 @@ export const deleteUser = user => {
 
 export const changePassword = (passwords, user) => {
   return axios({
-    url: apiUrl + `/api/profile/${user.id}/`,
+    url: apiUrl + `/api/profile/${user.user_id}/`,
     method: 'PATCH',
     headers: {
       'Authorization': `Token ${user.token}`
