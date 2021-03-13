@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
 
-import { signUp } from '../../api/auth'
+import { signUp, signIn } from '../../api/auth'
 import messages from '../AutoDismissAlert/messages'
 
 import Form from 'react-bootstrap/Form'
@@ -29,15 +29,11 @@ class SignUp extends Component {
 
   onSignUp = event => {
     event.preventDefault()
-
     const { msgAlert, history, setUser } = this.props
     if (this.state.password === this.state.passwordConfirmation && this.state.password !== '') {
       signUp(this.state)
-      // .then(() => signIn(this.state))
-        .then(res => {
-          console.log(res.data)
-          setUser(res.data)
-        })
+        .then(() => signIn(this.state))
+        .then((res) => setUser(res.data))
         .then(() => msgAlert({
           heading: 'Sign Up Success',
           message: messages.signUpSuccess,
@@ -62,70 +58,77 @@ class SignUp extends Component {
     }
   }
 
+  onCancel = e => {
+    e.preventDefault()
+    this.props.history.push('/')
+  }
+
   render () {
     const { email, password, passwordConfirmation, name, nickName } = this.state
 
     return (
-      <div className="signUp__wrapper">
-        <CancelIcon fontSize='large' onClick={this.props.onCancel} />
-        <h3>Sign Up</h3>
-        <Form onSubmit={this.onSignUp}>
-          <Form.Group controlId="email">
-            <Form.Label>Email address</Form.Label>
-            <Form.Control
-              required
-              type="email"
-              name="email"
-              value={email}
-              onChange={this.handleChange}
-            />
-          </Form.Group>
-          <Form.Group controlId="name">
-            <Form.Label>Name</Form.Label>
-            <Form.Control
-              required
-              name="name"
-              value={name}
-              type="text"
-              onChange={this.handleChange}
-            />
-          </Form.Group>
-          <Form.Group controlId="nickName">
-            <Form.Label>Preferred Name</Form.Label>
-            <Form.Control
-              name="nickName"
-              value={nickName}
-              type="text"
-              onChange={this.handleChange}
-            />
-          </Form.Group>
-          <Form.Group controlId="password">
-            <Form.Label>Password</Form.Label>
-            <Form.Control
-              required
-              name="password"
-              value={password}
-              type="password"
-              onChange={this.handleChange}
-            />
-          </Form.Group>
-          <Form.Group controlId="passwordConfirmation">
-            <Form.Label>Password Confirmation</Form.Label>
-            <Form.Control
-              required
-              name="passwordConfirmation"
-              value={passwordConfirmation}
-              type="password"
-              onChange={this.handleChange}
-            />
-          </Form.Group>
-          <Button
-            variant="primary"
-            type="submit"
-          >
-            Submit
-          </Button>
-        </Form>
+      <div className='landing'>
+        <div className="signUp__wrapper">
+          <CancelIcon fontSize='large' onClick={this.onCancel} />
+          <h3>Sign Up</h3>
+          <Form onSubmit={this.onSignUp}>
+            <Form.Group controlId="email">
+              <Form.Label>Email address</Form.Label>
+              <Form.Control
+                required
+                type="email"
+                name="email"
+                value={email}
+                onChange={this.handleChange}
+              />
+            </Form.Group>
+            <Form.Group controlId="name">
+              <Form.Label>Name</Form.Label>
+              <Form.Control
+                required
+                name="name"
+                value={name}
+                type="text"
+                onChange={this.handleChange}
+              />
+            </Form.Group>
+            <Form.Group controlId="nickName">
+              <Form.Label>Preferred Name</Form.Label>
+              <Form.Control
+                name="nickName"
+                value={nickName}
+                type="text"
+                onChange={this.handleChange}
+              />
+            </Form.Group>
+            <Form.Group controlId="password">
+              <Form.Label>Password</Form.Label>
+              <Form.Control
+                required
+                name="password"
+                value={password}
+                type="password"
+                onChange={this.handleChange}
+              />
+            </Form.Group>
+            <Form.Group controlId="passwordConfirmation">
+              <Form.Label>Password Confirmation</Form.Label>
+              <Form.Control
+                required
+                name="passwordConfirmation"
+                value={passwordConfirmation}
+                type="password"
+                onChange={this.handleChange}
+              />
+            </Form.Group>
+            <Button
+              variant="primary"
+              type="submit"
+            >
+              Submit
+            </Button>
+          </Form>
+        </div>
       </div>
     )
   }

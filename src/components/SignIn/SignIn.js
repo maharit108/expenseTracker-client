@@ -30,7 +30,9 @@ class SignIn extends Component {
     const { msgAlert, history, setUser } = this.props
 
     signIn(this.state)
-      .then(res => setUser(res.data.user))
+      .then(res => {
+        setUser(res.data)
+      })
       .then(() => msgAlert({
         heading: 'Sign In Success',
         message: messages.signInSuccess,
@@ -47,43 +49,49 @@ class SignIn extends Component {
       })
   }
 
+  onCancel = e => {
+    e.preventDefault()
+    this.props.history.push('/')
+  }
+
   render () {
     const { email, password } = this.state
-
     return (
-      <div className='signIn__wrapper'>
-        <CancelIcon fontSize='large' onClick={this.props.onCancel} />
-        <h3>Sign In</h3>
-        <Form onSubmit={this.onSignIn}>
-          <Form.Group controlId="email">
-            <Form.Label>Email address</Form.Label>
-            <Form.Control
-              required
-              type="email"
-              name="email"
-              value={email}
-              placeholder="Enter email"
-              onChange={this.handleChange}
-            />
-          </Form.Group>
-          <Form.Group controlId="password">
-            <Form.Label>Password</Form.Label>
-            <Form.Control
-              required
-              name="password"
-              value={password}
-              type="password"
-              placeholder="Password"
-              onChange={this.handleChange}
-            />
-          </Form.Group>
-          <Button
-            variant="primary"
-            type="submit"
-          >
-            Submit
-          </Button>
-        </Form>
+      <div className='landing'>
+        <div className='signIn__wrapper'>
+          <CancelIcon fontSize='large' onClick={this.onCancel} />
+          <h3>Sign In</h3>
+          <Form onSubmit={this.onSignIn}>
+            <Form.Group controlId="email">
+              <Form.Label>Email address</Form.Label>
+              <Form.Control
+                required
+                type="email"
+                name="email"
+                value={email}
+                placeholder="Enter email"
+                onChange={this.handleChange}
+              />
+            </Form.Group>
+            <Form.Group controlId="password">
+              <Form.Label>Password</Form.Label>
+              <Form.Control
+                required
+                name="password"
+                value={password}
+                type="password"
+                placeholder="Password"
+                onChange={this.handleChange}
+              />
+            </Form.Group>
+            <Button
+              variant="primary"
+              type="submit"
+            >
+              Submit
+            </Button>
+          </Form>
+        </div>
       </div>
     )
   }
