@@ -1,0 +1,40 @@
+.landing {
+    height: 100vh;
+    background: #f8f8f8;
+    display: grid;
+    place-items: center;
+}
+
+.landing__wrapper {
+    padding: 100px;
+    text-align: center;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 0.1px;
+}
+
+.landing__wrapper > img {
+  object-fit: contain;
+  height: 200px;
+  margin-bottom: 40px; 
+  border-radius: 20px;; 
+}
+
+.landing__buttons {
+    display: flex;
+    justify-content: space-around;
+}
+
+.landing__buttons > button {
+    margin-top: 50px;
+    text-transform: inherit !important;
+    background-color: #0a8d48;
+    border-color: #0a8d48;
+    color: white;
+    width: 100px;
+}
+
+.landing__buttons > button:hover {
+    background-color: rgba(10,141,72,0.8);
+    border-color: rgba(10,141,72,0.5);
+}
