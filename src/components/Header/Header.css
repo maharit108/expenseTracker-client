@@ -1,0 +1,27 @@
+.navbar__wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  z-index: 1020;
+  background: #f8f8f8;
+  padding: 20px 0;
+}
+
+.navbarCustom {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 0.1px;
+  margin: 0 auto;
+  width: 100vw;
+  max-width: 1200px;
+}
+
+@media only screen and (max-width: 1200px) {
+  .navbar__wrapper {
+    padding: 0;
+  }
+
+  .navbarCustom {
+    border-radius: 0;
+  }
+}

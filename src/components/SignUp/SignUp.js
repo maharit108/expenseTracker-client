@@ -73,12 +73,13 @@ class SignUp extends Component {
           <h3>Sign Up</h3>
           <Form onSubmit={this.onSignUp}>
             <Form.Group controlId="email">
-              <Form.Label>Email address</Form.Label>
+              <Form.Label>Email</Form.Label>
               <Form.Control
                 required
                 type="email"
                 name="email"
                 value={email}
+                placeholder="Enter email"
                 onChange={this.handleChange}
               />
             </Form.Group>
@@ -89,6 +90,7 @@ class SignUp extends Component {
                 name="name"
                 value={name}
                 type="text"
+                placeholder="Your Name"
                 onChange={this.handleChange}
               />
             </Form.Group>
@@ -98,6 +100,7 @@ class SignUp extends Component {
                 name="nickName"
                 value={nickName}
                 type="text"
+                placeholder="Nick Name"
                 onChange={this.handleChange}
               />
             </Form.Group>
@@ -108,6 +111,7 @@ class SignUp extends Component {
                 name="password"
                 value={password}
                 type="password"
+                placeholder="Password"
                 onChange={this.handleChange}
               />
             </Form.Group>
@@ -118,6 +122,7 @@ class SignUp extends Component {
                 name="passwordConfirmation"
                 value={passwordConfirmation}
                 type="password"
+                placeholder="Retype password"
                 onChange={this.handleChange}
               />
             </Form.Group>
