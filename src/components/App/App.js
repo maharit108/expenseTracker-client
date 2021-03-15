@@ -10,6 +10,7 @@ import SignIn from '../SignIn/SignIn'
 import Header from '../Header/Header'
 import SignOut from '../SignOut/SignOut'
 import ChangePassword from '../ChangePassword/ChangePassword'
+import Expenses from '../Expenses/Expenses'
 
 class App extends Component {
   constructor () {
@@ -47,6 +48,7 @@ class App extends Component {
           ) : (
             <div>
               <Header user={user} />
+              <Expenses user={user} />
             </div>
           )
         )} />

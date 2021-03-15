@@ -50,3 +50,55 @@ export const changePassword = (passwords, user) => {
     }
   })
 }
+
+export const getExpenses = (user) => {
+  return axios({
+    url: apiUrl + '/api/expenses/',
+    method: 'GET',
+    headers: {
+      'Authorization': `Token ${user.token}`
+    }
+  })
+}
+
+export const addExpenses = (user, data) => {
+  return axios({
+    url: apiUrl + '/api/expenses/',
+    method: 'POST',
+    headers: {
+      'Authorization': `Token ${user.token}`
+    },
+    data: {
+      expense_item: data.item,
+      expense_amount: data.amount,
+      expense_tag: data.tag,
+      date: data.date
+    }
+  })
+}
+
+export const editExpenses = (user, data, expenseId) => {
+  return axios({
+    url: apiUrl + `/api/expenses/${expenseId}`,
+    method: 'PATCH',
+    headers: {
+      'Authorization': `Token ${user.token}`
+    },
+    data: {
+      expense_item: data.item,
+      expense_amount: data.amount,
+      expense_tag: data.tag,
+      date: data.date
+    }
+  })
+}
+
+export const delExpenses = (user, expenseId) => {
+  return axios({
+    url: apiUrl + `/api/expenses/${expenseId}`,
+    method: 'DELETE',
+    headers: {
+      'Authorization': `Token ${user.token}`
+    }
+  })
+}
