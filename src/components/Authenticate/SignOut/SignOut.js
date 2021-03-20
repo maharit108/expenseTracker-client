@@ -5,7 +5,7 @@ import CancelIcon from '@material-ui/icons/Cancel'
 import CheckCircleIcon from '@material-ui/icons/CheckCircle'
 
 import Modal from 'react-bootstrap/Modal'
-import messages from '../AutoDismissAlert/messages'
+import messages from '../../App/AutoDismissAlert/messages'
 
 import './SignOut.css'
 

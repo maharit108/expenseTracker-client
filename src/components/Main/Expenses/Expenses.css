@@ -1,0 +1,33 @@
+.expenses__wrapper {
+  padding: 10px;
+  text-align: center;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 0.1px;
+  max-width: 1200px;
+  margin: 10px auto;
+}
+
+.expenses__heading {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.expenses__heading__center {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.expenses__heading__center > h4 {
+  margin: 0 40px;
+}
+
+@media only screen and (max-width: 1200px) {
+  .expenses__wrapper {
+    margin: 20px auto;
+  }
+}

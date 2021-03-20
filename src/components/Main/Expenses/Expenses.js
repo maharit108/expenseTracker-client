@@ -1,9 +1,13 @@
 import React, { Component } from 'react'
 
-import { getExpenses } from '../../api/auth.js'
+import { getExpenses } from '../../../api/auth.js'
 import './Expenses.css'
 
 import AddCircleIcon from '@material-ui/icons/AddCircle'
+import DeleteForeverIcon from '@material-ui/icons/DeleteForever'
+import EditIcon from '@material-ui/icons/Edit'
+import ArrowRightIcon from '@material-ui/icons/ArrowRight'
+import ArrowLeftIcon from '@material-ui/icons/ArrowLeft'
 import Table from 'react-bootstrap/Table'
 
 class Expenses extends Component {
@@ -12,7 +16,21 @@ class Expenses extends Component {
     this.state = {
       expensedata: {},
       showyear: '',
-      showmonth: ''
+      showmonth: '',
+      monthName: {
+        '01': 'Jan',
+        '02': 'Feb',
+        '03': 'Mar',
+        '04': 'Apr',
+        '05': 'May',
+        '06': 'June',
+        '07': 'July',
+        '08': 'Aug',
+        '09': 'Sept',
+        '10': 'Oct',
+        '11': 'Nov',
+        '12': 'Dec'
+      }
     }
   }
 
@@ -51,7 +69,6 @@ class Expenses extends Component {
             this.dataSortHelper(year, month, expense, data)
           })
           this.setState({ expensedata: data })
-          console.log(this.state.expensedata, this.state.showyear, this.state.showmonth)
         })
         .catch(console.error)
     )
@@ -82,23 +99,23 @@ class Expenses extends Component {
     const { expensedata, showmonth, showyear } = this.state
 
     let expJsx = (
-
       <tr><th>-----No Expenses This Month-----</th></tr>
     )
 
     if (Object.keys(expensedata).length !== 0) {
-      console.log('a')
       if (expensedata[showyear]) {
         if (expensedata[showyear][showmonth]) {
           expJsx = (
             expensedata[showyear][showmonth].map((expense, idx) => {
               return (
                 <tr key={expense.id}>
+                  <td><EditIcon /> </td>
                   <th>{idx}</th>
-                  <th>{expense.expense_item}</th>
-                  <th>{expense.expense_amount}</th>
-                  <th>{expense.expense_tag}</th>
-                  <th>{expense.data ? expense.data : expense.created_on}</th>
+                  <td>{expense.expense_item}</td>
+                  <td>$ {expense.expense_amount}</td>
+                  <td>{expense.expense_tag}</td>
+                  <td>{expense.data ? expense.data : expense.created_on}</td>
+                  <td><DeleteForeverIcon /> </td>
                 </tr>
               )
             })
@@ -110,19 +127,27 @@ class Expenses extends Component {
     return (
       <div className='expenses__wrapper'>
         <div className='expenses__heading'>
-          <h2>Expenses</h2>
-          <span>Add Expense</span>
-          <AddCircleIcon fontSize='large' onClick={this.onAdd} />
+          <div className='expenses__heading__left'> <h3>Expenses</h3> </div>
+          <div className='expenses__heading__center'>
+            <ArrowLeftIcon fontSize='large' />
+            <h4>{this.state.monthName[showmonth]}, {showyear}</h4>
+            <ArrowRightIcon fontSize='large' />
+          </div>
+          <div className='expenses__heading__right'>
+            <AddCircleIcon fontSize='large' onClick={this.onAdd} />
+          </div>
         </div>
         <div className='expense__board'>
           <Table>
             <thead>
               <tr key='head'>
-                <th>#</th>
+                <th></th>
+                <th>SN</th>
                 <th>Description</th>
                 <th>Expense Amount</th>
                 <th>Category</th>
                 <th>Date</th>
+                <th></th>
               </tr>
             </thead>
             <tbody>
